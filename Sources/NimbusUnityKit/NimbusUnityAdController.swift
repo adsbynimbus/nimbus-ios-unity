@@ -163,7 +163,14 @@ final class NimbusUnityAdController: AdController,
         _ placementId: String,
         withFinish state: UnityAdsShowCompletionState
     ) {
-        sendNimbusEvent(state == .showCompletionStateCompleted ? .completed : .skipped)
+        switch state {
+        case .showCompletionStateSkipped:
+            sendNimbusEvent(.skipped)
+        case .showCompletionStateCompleted where adRenderType == .rewarded:
+            sendNimbusEvent(.rewardEarned)
+        default:
+            break
+        }
         
         destroy()
     }
