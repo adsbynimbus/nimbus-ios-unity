@@ -9,10 +9,11 @@
 import NimbusKit
 import UnityAds
 
+// Internal: Do NOT implement delegate conformance as separate extensions as the methods will not be found in runtime when built as a static library
 final class NimbusUnityAdController: AdController,
-                                     @preconcurrency UADSBannerViewDelegate,
-                                     @preconcurrency UnityAdsLoadDelegate,
-                                     @preconcurrency UnityAdsShowDelegate {
+                                     @MainActor UADSBannerViewDelegate,
+                                     @MainActor UnityAdsLoadDelegate,
+                                     @MainActor UnityAdsShowDelegate {
     
     private let adObjectId = UUID().uuidString
     
@@ -197,5 +198,3 @@ final class NimbusUnityAdController: AdController,
         onUnityAdClick()
     }
 }
-
-// Internal: Do NOT implement delegate conformance as separate extensions as the methods won't not be found in runtime when built as a static library
