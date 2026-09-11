@@ -24,13 +24,13 @@ final class UnityRequestBridge: UnityRequestBridgeType {
     }
     
     @inlinable
-    public static func set(coppa: Bool) {
+    static func set(coppa: Bool) {
         let metadata = UADSMetaData()
         metadata.setRaw("user.nonbehavioral", value: coppa)
         metadata.commit()
     }
     
-    @concurrent func token(for format: UnityAdsAdFormat) async -> String? {
+    func token(for format: UnityAdsAdFormat) async -> String? {
         await withUnsafeContinuation { continuation in
             UnityAds.getToken(with: .init(adFormat: format)) { token in
                 continuation.resume(returning: token)

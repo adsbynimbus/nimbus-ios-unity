@@ -21,7 +21,7 @@ import Testing
     }
     
     @Test func unityTokenIsReturned() async throws {
-        let ad = try await Nimbus.rewardedAd(position: "test")
+        let ad = await Nimbus.rewardedAd(position: "test")
         let info = try await NimbusRequest(from: ad.adRequest!.request)
         let deltas = try await interceptor.modifyRequest(request: info)
         
@@ -35,7 +35,7 @@ import Testing
     
     @Test func throwsWhenUnityIsNotInitialized() async throws {
         bridge._isInitialized = false
-        let ad = try await Nimbus.rewardedAd(position: "test")
+        let ad = await Nimbus.rewardedAd(position: "test")
         
         await #expect(throws: NimbusError.self) {
             let info = try await NimbusRequest(from: ad.adRequest!.request)
@@ -45,7 +45,7 @@ import Testing
     
     @Test func throwsWhenUnityIsNotSupported() async throws {
         bridge._isSupported = false
-        let ad = try await Nimbus.rewardedAd(position: "test")
+        let ad = await Nimbus.rewardedAd(position: "test")
         
         let error = await #expect(throws: NimbusError.self) {
             let info = try await NimbusRequest(from: ad.adRequest!.request)
@@ -59,7 +59,7 @@ import Testing
     
     @Test func throwsWhenUnityTokenIsNotAvailable() async throws {
         bridge._token = nil
-        let ad = try await Nimbus.rewardedAd(position: "test")
+        let ad = await Nimbus.rewardedAd(position: "test")
         
         let error = await #expect(throws: NimbusError.self) {
             let info = try await NimbusRequest(from: ad.adRequest!.request)
@@ -73,7 +73,7 @@ import Testing
     }
     
     @Test func throwsWhenRequestIsNative() async throws {
-        let ad = try await Nimbus.inlineAd(position: "test") {
+        let ad = await Nimbus.inlineAd(position: "test") {
             native()
         }
         let error = await #expect(throws: NimbusError.self) {
@@ -89,7 +89,7 @@ import Testing
     
     @MainActor
     @Test func unityTokenGetsInsertedIntoRequest() async throws {
-        let ad = try Nimbus.rewardedAd(position: "test")
+        let ad = Nimbus.rewardedAd(position: "test")
         ad.adRequest!.request.interceptors = [interceptor]
         
         try await ad.adRequest!.request.modifyRequestWithExtras(

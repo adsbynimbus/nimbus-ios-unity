@@ -78,7 +78,6 @@ final class NimbusUnityAdController: AdController,
         }
     }
     
-    @MainActor
     private func presentIfNeeded() {
         guard started, adState == .ready else { return }
         
