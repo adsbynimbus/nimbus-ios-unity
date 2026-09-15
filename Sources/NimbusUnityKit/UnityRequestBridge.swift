@@ -31,7 +31,7 @@ final class UnityRequestBridge: UnityRequestBridgeType {
     }
     
     func token(for format: UnityAdsAdFormat) async -> String? {
-        await withUnsafeContinuation { continuation in
+        await withCheckedContinuation { continuation in
             UnityAds.getToken(with: .init(adFormat: format)) { token in
                 continuation.resume(returning: token)
             }

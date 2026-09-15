@@ -10,10 +10,10 @@ import UnityAds
 import NimbusKit
 
 final class UnityInitDelegateWrapper: NSObject, UnityAdsInitializationDelegate {
-    let continuation: UnsafeContinuation<Void, Never>
+    let continuation: CheckedContinuation<Void, Never>
     private var didResume = false
     
-    init(continuation: UnsafeContinuation<Void, Never>) {
+    init(continuation: CheckedContinuation<Void, Never>) {
         self.continuation = continuation
     }
     

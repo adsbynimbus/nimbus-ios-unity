@@ -66,7 +66,7 @@ public struct UnityExtension: NimbusRequestExtension, NimbusRenderExtension {
         let testMode = await Nimbus.configuration.testMode
         var delegate: UnityInitDelegateWrapper?
         
-        await withUnsafeContinuation { continuation in
+        await withCheckedContinuation { continuation in
             delegate = UnityInitDelegateWrapper(continuation: continuation)
             UnityAds.initialize(gameId, testMode: testMode, initializationDelegate: delegate)
         }
