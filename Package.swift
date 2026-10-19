@@ -11,14 +11,14 @@ var package = Package(
            targets: ["NimbusUnityKit"])
     ],
     dependencies: [
-        .package(url: "https://github.com/adsbynimbus/swift-package-unityads", from: "4.15.1"),
+        .package(url: "https://github.com/Unity-Technologies/Unity-Ads-Swift-Package", from: "4.17.0"),
     ],
     targets: [
         .target(
             name: "NimbusUnityKit",
             dependencies: [
                 .product(name: "NimbusKit", package: "nimbus-ios-sdk"),
-                .product(name: "UnityAds", package: "swift-package-unityads")
+                .product(name: "UnityAds", package: "Unity-Ads-Swift-Package")
             ]
         ),
         .testTarget(
