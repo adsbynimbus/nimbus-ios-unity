@@ -1,5 +1,5 @@
 //
-//  NimbusUnityRequestInterceptor.swift
+//  UnityRequestInterceptor.swift
 //  NimbusUnityKit
 //
 //  Created on 6/2/21.
@@ -9,7 +9,7 @@
 import NimbusKit
 import UnityAds
 
-final class NimbusUnityRequestInterceptor: Sendable {
+final class UnityRequestInterceptor: Sendable {
     
     private let bridge: UnityRequestBridgeType
     
@@ -18,7 +18,7 @@ final class NimbusUnityRequestInterceptor: Sendable {
     }
 }
 
-extension NimbusUnityRequestInterceptor: NimbusRequest.Interceptor {
+extension UnityRequestInterceptor: NimbusRequest.Interceptor {
     
     public func modifyRequest(request: NimbusRequest) async throws -> [NimbusRequest.Delta] {
         guard bridge.isInitialized else {

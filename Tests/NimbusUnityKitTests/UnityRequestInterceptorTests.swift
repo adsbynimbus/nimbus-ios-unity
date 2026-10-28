@@ -1,5 +1,5 @@
 //
-//  NimbusUnityRequestInterceptor.swift
+//  UnityRequestInterceptorTests.swift
 //  NimbusUnityKitTests
 //
 //  Created on 12/13/21.
@@ -11,13 +11,13 @@
 import UnityAds
 import Testing
 
-@Suite("Unity interceptor tests") struct NimbusUnityRequestInterceptorTests {
+@Suite("Unity interceptor tests") struct UnityRequestInterceptorTests {
     let bridge: MockUnityBridge
-    let interceptor: NimbusUnityRequestInterceptor
+    let interceptor: UnityRequestInterceptor
     
     init() {
         bridge = MockUnityBridge()
-        interceptor = NimbusUnityRequestInterceptor(bridge: bridge)
+        interceptor = UnityRequestInterceptor(bridge: bridge)
     }
     
     @Test func unityTokenIsReturned() async throws {

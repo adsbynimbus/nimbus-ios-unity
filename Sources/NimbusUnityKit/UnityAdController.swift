@@ -1,5 +1,5 @@
 //
-//  NimbusUnityAdController.swift
+//  UnityAdController.swift
 //  NimbusUnityKit
 //
 //  Created on 6/2/21.
@@ -10,10 +10,10 @@ import NimbusKit
 import UnityAds
 
 // Internal: Do NOT implement delegate conformance as separate extensions as the methods will not be found in runtime when built as a static library
-final class NimbusUnityAdController: AdController,
-                                     @MainActor UADSBannerViewDelegate,
-                                     @MainActor UnityAdsLoadDelegate,
-                                     @MainActor UnityAdsShowDelegate {
+final class UnityAdController: AdController,
+                               @MainActor UADSBannerViewDelegate,
+                               @MainActor UnityAdsLoadDelegate,
+                               @MainActor UnityAdsShowDelegate {
     
     private let adObjectId = UUID().uuidString
     

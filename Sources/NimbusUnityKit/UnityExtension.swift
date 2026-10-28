@@ -28,7 +28,7 @@ public struct UnityExtension: NimbusRequestExtension, NimbusRenderExtension {
     public var network: String { "unity" }
     
     @_documentation(visibility: internal)
-    public var controllerType: AdController.Type { NimbusUnityAdController.self }
+    public var controllerType: AdController.Type { UnityAdController.self }
     
     /// Creates a UnityAds extension.
     ///
@@ -41,7 +41,7 @@ public struct UnityExtension: NimbusRequestExtension, NimbusRenderExtension {
     /// }
     /// ```
     public init(gameId: String? = nil) {
-        self.interceptor = NimbusUnityRequestInterceptor()
+        self.interceptor = UnityRequestInterceptor()
         
         guard let gameId else {
             Nimbus.Log.lifecycle.debug("Skipping Unity Ads SDK initialization, gameId was not provided")
