@@ -18,5 +18,5 @@ Pod::Spec.new do |spec|
     }
 
     spec.dependency 'NimbusSDK/NimbusKit', '~> 3'
-    spec.dependency 'UnityAds', '>=4.9.2'
+    spec.dependency 'UnityAds', '~> 4.17'
 end
